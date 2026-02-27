@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Business CADs | 3D Printable Business Card Designer</title>
+    <meta name="description" content="Design and export 3D-printable business cards with custom embossed text, integrated QR codes, or SVG graphics in this precision CAD utility.">
+    <meta name="keywords" content="3D Printing, CAD, Business Card Designer, STL Export, QR Code Generator, 3D Modeling, Maker Tool, Three.js">
+    <meta name="author" content="Chris Pirillo">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://arcade.pirillo.com/business-cads.html">
+
+    <meta property="og:site_name" content="Chris Pirillo's Arcade">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Business CADs: 3D Business Card Designer">
+    <meta property="og:description" content="Design and export 3D-printable business cards with custom embossed text, integrated QR codes, or SVG graphics in this precision CAD utility.">
+    <meta property="og:url" content="https://arcade.pirillo.com/business-cads.html">
+    <meta property="og:image" content="https://arcade.pirillo.com/images/business-cads.png">
+    <meta property="og:image:alt" content="Business CADs: 3D Business Card Designer">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ChrisPirillo">
+    <meta name="twitter:creator" content="@ChrisPirillo">
+    <meta name="twitter:title" content="Business CADs: 3D Business Card Designer">
+    <meta name="twitter:description" content="Design and export 3D-printable business cards with custom embossed text, integrated QR codes, or SVG graphics in this precision CAD utility.">
+    <meta name="twitter:image" content="https://arcade.pirillo.com/images/business-cads.png">
+    <meta name="twitter:domain" content="pirillo.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1CQ4D3VQ3L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1CQ4D3VQ3L');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/STLExporter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/TTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/SVGLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Business CADs: 3D Business Card Designer",
+      "description": "Design and export 3D-printable business cards with custom embossed text, integrated QR codes, or SVG graphics in this precision CAD utility.",
+      "keywords": "3D Printing, CAD, Business Card Designer, STL Export, QR Code Generator, 3D Modeling, Maker Tool, Three.js",
+      "url": "https://arcade.pirillo.com/business-cads.html",
+      "image": "https://arcade.pirillo.com/images/business-cads.png",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://arcade.pirillo.com/images/business-cads.png"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Chris Pirillo",
+        "url": "https://pirillo",
+        "sameAs": [
+          "https://x.com/ChrisPirillo"
+        ]
+      },
+      "mainEntity": {
+        "name": "Business CADs: 3D Business Card Designer",
+        "description": "Design and export 3D-printable business cards with custom embossed text, integrated QR codes, or SVG graphics in this precision CAD utility.",
+        "image": "https://arcade.pirillo.com/images/business-cads.png",
+        "operatingSystem": "Web Browser",
+        "author": {
+          "@type": "Person",
+          "name": "Chris Pirillo"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "@type": "WebApplication",
+        "applicationCategory": "Clarify"
+      }
+    }
+    </script>
+    <style>
+        :root { --accent: #6366f1; --bg: #020617; --panel: #0f172a; --border: #1e293b; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            overflow: hidden; 
+            background: var(--bg); 
+            color: #f8fafc;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        #canvas-container { width: 100vw; height: 100vh; position: absolute; z-index: 0; contain: strict; touch-action: none; }
+
+        .sidebar {
+            width: 360px; height: 100vh; display: flex; flex-direction: column;
+            background: #0f172a; border-right: 1px solid #334155;
+            box-shadow: 20px 0 60px rgba(0,0,0,0.5); z-index: 100; will-change: transform;
+        }
+
+        .section-header {
+            padding: 12px 24px; background: #1e293b; border-bottom: 1px solid #334155;
+            font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8;
+        }
+
+        .control-group { padding: 20px 24px; border-bottom: 1px solid #1e293b; }
+
+        .ui-label { font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; display: block; }
+
+        .input-main {
+            background: #020617; border: 1px solid #334155; border-radius: 6px;
+            padding: 10px 12px; width: 100%; font-size: 13px; color: #fff; outline: none;
+            transition: border-color 0.2s, background 0.2s; user-select: auto;
+        }
+        .input-main:focus { border-color: var(--accent); background: #000; }
+
+        .align-strip { display: flex; gap: 4px; background: #020617; padding: 4px; border-radius: 8px; border: 1px solid #334155; }
+        .align-item {
+            flex: 1; padding: 8px 4px; border-radius: 4px; font-size: 10px; font-weight: 700;
+            color: #64748b; text-align: center; cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+        }
+        .align-item:hover { color: #fff; background: #1e293b; }
+        .align-item.active { background: var(--accent); color: #fff; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
+
+        input[type="range"] { -webkit-appearance: none; width: 100%; background: #334155; height: 4px; border-radius: 2px; cursor: pointer; }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 16px; height: 16px; background: #fff; border-radius: 50%; cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5); border: 2px solid var(--accent);
+        }
+
+        .data-val { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 700; }
+
+        #help-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(12px);
+        }
+        .modal-content {
+            background: #0f172a; border: 1px solid #334155; max-width: 500px; width: 90%;
+            margin: 10vh auto; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+        }
+        .modal-link-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; background: #1e293b; border: 1px solid #334155;
+            border-radius: 12px; color: #cbd5e1; font-size: 14px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; margin-bottom: 12px;
+        }
+        .modal-link-btn:hover { background: #334155; border-color: #6366f1; color: white; transform: translateY(-2px); }
+
+        .twitch-link {
+            position: fixed; bottom: 32px; right: 32px; background: #9146FF; color: white;
+            padding: 12px 24px; border-radius: 9999px; font-weight: 800; font-size: 13px;
+            text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center;
+            gap: 10px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255,255,255,0.1); transition: all 0.2s; z-index: 50; text-decoration: none;
+        }
+
+        .toggle-switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #334155; transition: .4s; border-radius: 34px;
+        }
+        .toggle-slider:before {
+            position: absolute; content: ""; height: 16px; width: 16px;
+            left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%;
+        }
+        input:checked + .toggle-slider { background-color: var(--accent); }
+        input:checked + .toggle-slider:before { transform: translateX(22px); }
+
+        @media (max-width: 768px) {
+            .relative.z-10.flex { flex-direction: column; height: 100vh; pointer-events: none; }
+            .sidebar { 
+                width: 100%; height: 50%; border-right: none; border-bottom: 1px solid #334155; 
+                pointer-events: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+            #canvas-container { height: 50%; top: 50%; width: 100vw; touch-action: none; }
+            .sidebar-scroll-area { overflow-y: auto; flex: 1; }
+            .twitch-link span { display: none; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <main id="canvas-container" aria-label="3D Card Preview"></main>
+    
+    <div class="relative z-10 flex h-screen pointer-events-none">
+        <aside class="sidebar pointer-events-auto">
+            
+            <header class="p-8 border-b border-slate-800 flex justify-between items-center shrink-0">
+                <h1 class="text-xl font-black tracking-tighter uppercase text-white flex items-center gap-2">
+                    <span class="w-2 h-6 bg-indigo-500 rounded-sm"></span>Business CADs
+                </h1>
+                <button id="help-trigger" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </button>
+            </header>
+
+            <div class="sidebar-scroll-area overflow-y-auto">
+                <section class="section-container">
+                    <div class="section-header">Typeface / Font</div>
+                    <div class="control-group space-y-6">
+                        <div>
+                            <label for="font-family" class="ui-label">Font Family</label>
+                            <select id="font-family" class="input-main !bg-slate-900 font-bold cursor-pointer">
+                                <optgroup label="Standard Geometry">
+                                    <option value="helvetiker_bold">Helvetiker Bold</option>
+                                    <option value="helvetiker">Helvetiker Regular</option>
+                                    <option value="optimer_bold">Optimer Bold</option>
+                                    <option value="gentilis_bold">Gentilis Bold</option>
+                                </optgroup>
+                                <optgroup label="Modern Sans (Droid)">
+                                    <option value="droid_sans_bold">Droid Sans Bold</option>
+                                    <option value="droid_sans_regular">Droid Sans Regular</option>
+                                    <option value="droid_serif_bold">Droid Serif Bold</option>
+                                    <option value="droid_serif_regular">Droid Serif Regular</option>
+                                </optgroup>
+                                <optgroup label="High Contrast (TTF)">
+                                    <option value="alfa_slab_one">Alfa Slab One</option>
+                                    <option value="black_ops_one">Black Ops One</option>
+                                    <option value="paytone_one">Paytone One</option>
+                                    <option value="passion_one">Passion One</option>
+                                    <option value="archivo_black">Archivo Black</option>
+                                    <option value="anton_regular">Anton Ultra</option>
+                                    <option value="ubuntu_bold">Ubuntu Bold</option>
+                                    <option value="bebas_neue_regular">Bebas Neue</option>
+                                    <option value="lato_black">Lato Black</option>
+                                    <option value="kanit_black">Kanit Black</option>
+                                    <option value="poppins_black">Poppins Black</option>
+                                    <option value="titillium_web_bold">Titillium Bold</option>
+                                </optgroup>
+                                <optgroup label="Print-Optimized Serif">
+                                    <option value="arvo_bold">Arvo Bold (Industrial)</option>
+                                    <option value="zilla_slab_bold">Zilla Slab Bold (Chunky)</option>
+                                    <option value="bree_serif">Bree Serif (Slabby)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="kerning" class="ui-label !mb-0">Kerning Offset</label>
+                                    <span id="readout-kerning" class="data-val">0.0</span>
+                                </div>
+                                <input type="range" id="kerning" min="-1" max="2" step="0.05" value="0">
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="line-spacing" class="ui-label !mb-0">Gap</label>
+                                    <span id="readout-line-spacing" class="data-val">4.0</span>
+                                </div>
+                                <input type="range" id="line-spacing" min="1" max="6" step="0.1" value="4.0">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-container">
+                    <div class="section-header">QR Code / Graphic</div>
+                    <div class="control-group space-y-6">
+                        <div class="flex items-center justify-between input-main !py-3">
+                            <span class="ui-label !mb-0">Show Graphic</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="show-graphic" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div id="qr-data-container">
+                            <label for="qr-data" class="ui-label">QR Endpoint (URL/Text)</label>
+                            <input type="text" id="qr-data" class="input-main" placeholder="https://...">
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label class="ui-label">Custom Image</label>
+                            <div class="flex gap-2">
+                                <button id="upload-svg-btn" class="flex-1 py-2 bg-slate-800 border border-slate-700 rounded-lg text-[10px] font-bold uppercase hover:bg-slate-700 transition-colors">Upload SVG</button>
+                                <button id="clear-svg-btn" class="flex-none px-4 py-2 bg-red-950/20 border border-red-900/30 rounded-lg text-[10px] font-bold uppercase text-red-400 hover:bg-red-900/40 transition-colors hidden">Clear</button>
+                            </div>
+                            <input type="file" id="svg-file-input" class="hidden" accept=".svg">
+                            <p id="svg-status" class="text-[9px] text-slate-500 font-medium"></p>
+                        </div>
+
+                        <div>
+                            <label class="ui-label">Anchor Position</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button data-corner="tl" class="align-item corner-btn !py-4 border border-slate-800 bg-slate-900">Top L</button>
+                                <button data-corner="ml" class="align-item corner-btn !py-4 border border-slate-800 bg-slate-900">Mid L</button>
+                                <button data-corner="bl" class="align-item corner-btn !py-4 border border-slate-800 bg-slate-900">Bot L</button>
+                                <button data-corner="tr" class="align-item corner-btn !py-4 border border-slate-800 bg-slate-900">Top R</button>
+                                <button data-corner="mr" class="align-item corner-btn !py-4 border border-slate-800 bg-slate-900">Mid R</button>
+                                <button data-corner="br" class="align-item corner-btn !py-4 border border-slate-800 bg-slate-900">Bot R</button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="qr-offset-x" class="ui-label !mb-0">X Offset</label>
+                                    <span id="readout-qr-offset-x" class="data-val">0.0</span>
+                                </div>
+                                <input type="range" id="qr-offset-x" min="-40" max="40" step="0.5" value="0">
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="qr-offset-y" class="ui-label !mb-0">Y Offset</label>
+                                    <span id="readout-qr-offset-y" class="data-val">0.0</span>
+                                </div>
+                                <input type="range" id="qr-offset-y" min="-25" max="25" step="0.5" value="0">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="qr-size-slider" class="ui-label !mb-0">Physical Scale</label>
+                                <span id="readout-qr-size" class="data-val">28.5mm</span>
+                            </div>
+                            <input type="range" id="qr-size-slider" min="15" max="35" step="0.5" value="28.5">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-container">
+                    <div class="section-header">Primary Text</div>
+                    <div class="control-group space-y-4">
+                        <div>
+                            <label for="text-side" class="ui-label">What do you want next to the graphic?</label>
+                            <textarea id="text-side" rows="3" class="input-main resize-none" placeholder="Primary text..."></textarea>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="ui-label">Horizontal Align</span>
+                                <div class="align-strip">
+                                    <div data-key="textSideAlignH" data-val="left" class="align-item side-h-btn" role="button">Left</div>
+                                    <div data-key="textSideAlignH" data-val="center" class="align-item side-h-btn" role="button">Center</div>
+                                    <div data-key="textSideAlignH" data-val="right" class="align-item side-h-btn" role="button">Right</div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="ui-label">Vertical Align</span>
+                                <div class="align-strip">
+                                    <div data-key="textSideVAlign" data-val="top" class="align-item side-v-btn" role="button">Top</div>
+                                    <div data-key="textSideVAlign" data-val="middle" class="align-item side-v-btn" role="button">Mid</div>
+                                    <div data-key="textSideVAlign" data-val="bottom" class="align-item side-v-btn" role="button">Bot</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-container">
+                    <div class="section-header">Secondary Text</div>
+                    <div class="control-group space-y-4">
+                        <div class="space-y-2">
+                            <label for="text-full-1" class="sr-only">Opposite Line 1</label>
+                            <input type="text" id="text-full-1" class="input-main" placeholder="Opposite Line 1">
+                            <label for="text-full-2" class="sr-only">Opposite Line 2</label>
+                            <input type="text" id="text-full-2" class="input-main" placeholder="Opposite Line 2">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="ui-label">Horizontal Align</span>
+                                <div class="align-strip">
+                                    <div data-val="left" class="align-item align-btn" role="button">Left</div>
+                                    <div data-val="center" class="align-item align-btn" role="button">Center</div>
+                                    <div data-val="right" class="align-item align-btn" role="button">Right</div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="ui-label">Vertical Align</span>
+                                <div class="align-strip">
+                                    <div data-val="top" class="align-item v-align-btn" role="button">Top</div>
+                                    <div data-val="middle" class="align-item v-align-btn" role="button">Mid</div>
+                                    <div data-val="bottom" class="align-item v-align-btn" role="button">Bot</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-container">
+                    <div class="section-header">Output Layer Height</div>
+                    <div class="control-group space-y-4">
+                        <div class="flex items-center justify-between input-main !py-3">
+                            <span class="ui-label !mb-0">Enable Raised Border</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="show-border">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="base-thick" class="ui-label">Card Base (mm)</label>
+                                <input type="number" id="base-thick" min="1" step="0.1" class="input-main">
+                            </div>
+                            <div>
+                                <label for="emboss-height" class="ui-label">Information (mm)</label>
+                                <input type="number" id="emboss-height" min="0.2" step="0.1" class="input-main">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-container">
+                    <div class="section-header">Preview Styles</div>
+                    <div class="control-group grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 input-main">
+                            <input type="color" id="color-base" class="w-6 h-6 rounded bg-transparent border-none p-0 cursor-pointer" aria-label="Card Base Color">
+                            <span class="text-[11px] font-bold text-slate-400">Card Base</span>
+                        </div>
+                        <div class="flex items-center gap-3 input-main">
+                            <input type="color" id="color-ink" class="w-6 h-6 rounded bg-transparent border-none p-0 cursor-pointer" aria-label="Ink Color">
+                            <span class="text-[11px] font-bold text-slate-400">Information</span>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="section-container mt-auto">
+                    <div class="section-header">Project Workspace</div>
+                    <div class="control-group space-y-6">
+                        <div>
+                            <div class="align-strip !bg-slate-900 !p-1.5">
+                                <button id="import-btn-workspace" class="align-item !py-3 !text-slate-300 font-bold border border-slate-800 hover:border-slate-600 rounded-lg">Import Data</button>
+                                <button id="export-json-btn" class="align-item !py-3 !text-slate-300 font-bold border border-slate-800 hover:border-slate-600 rounded-lg">Export Data</button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                        <button id="export-btn" class="flex-1 py-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs uppercase tracking-[0.2em] transition-all active:scale-[0.98] shadow-lg shadow-emerald-900/40 flex items-center justify-center gap-3 pointer-events-auto border-b-4 border-emerald-800">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            STL
+                        </button>
+                        <button id="export-3mf-btn" class="flex-1 py-5 rounded-xl text-white font-black text-xs uppercase tracking-[0.2em] transition-all active:scale-[0.98] shadow-lg flex items-center justify-center gap-3 pointer-events-auto border-b-4 border-cyan-800" style="background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            3MF
+                        </button>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <input type="file" id="config-file-input" class="hidden" accept=".json">
+        </aside>
+    </div>
+
+    <div id="help-modal" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <div class="p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
+                <h2 id="modal-title" class="text-xl font-black uppercase text-white tracking-tight">Who Made Business CADs?</h2>
+                <button id="modal-close" aria-label="Close Modal" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-800 text-slate-500 hover:text-white transition-all">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <nav class="p-8 space-y-8">
+                <p class="text-sm text-slate-300 leading-relaxed font-medium bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                    Business CADs allows you to design 3D-printable business cards with integrated QR codes and embossed typography. Adjust your settings on the left and export an STL ready for dual-color 3D printing.
+                </p>
+                <div class="grid gap-4">
+                    <a href="https://arcade.pirillo.com/" target="_blank" rel="noopener" class="modal-link-btn">
+                        <span>More of My Apps</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                    <a href="https://chris.pirillo.com/" target="_blank" rel="noopener" class="modal-link-btn">
+                        <span>Follow Chris Pirillo</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                    <a href="https://ctrlaltcreate.live/" target="_blank" rel="noopener" class="modal-link-btn">
+                        <span>Learn How to Make Apps</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                    <a href="https://www.paypal.com/donate/?hosted_button_id=UMWCDWGVXVHZU" target="_blank" rel="noopener" class="modal-link-btn !bg-indigo-950/40 !border-indigo-500/40 !text-indigo-200 hover:!bg-indigo-600 hover:!text-white">
+                        <span>Donate to Me Here</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                    <a href="https://patreon.com/ChrisPirillo" target="_blank" rel="noopener" class="modal-link-btn !bg-orange-950/40 !border-orange-500/40 !text-orange-200 hover:!bg-orange-600 hover:!text-white">
+                        <span>Support My Patreon</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <a href="https://twitch.tv/MakerDeck" target="_blank" rel="noopener" class="twitch-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+        </svg>        <span>MakerDeck Live</span>
+    </a>
+    
+    <div id="qr-hidden" style="position: absolute; top: -1000px; left: -1000px; width: 64px; height: 64px; visibility: hidden;"></div>
+
+    <script>
+        const container = document.getElementById('canvas-container');
+        const generateGradient = () => {
+            const h1 = Math.floor(Math.random() * 360);
+            const h2 = (h1 + 40) % 360;
+            container.style.background = `radial-gradient(circle at 70% 30%, hsla(${h1}, 45%, 15%, 1) 0%, hsla(${h2}, 45%, 5%, 1) 100%)`;
+        };
+        generateGradient();
+
+        const CARD_WIDTH = 85;
+        const CARD_HEIGHT = 50;
+        const BASE_MARGIN = 3.5; 
+
+        let config = {
+            "textSide": "geek / nerd\nMakerDeck",
+            "textFull1": "@ChrisPirillo",
+            "textFull2": "arcade.pirillo.com",
+            "textSideAlignH": "center",
+            "textSideVAlign": "middle",
+            "textFullAlign": "center",
+            "textFullVAlign": "middle",
+            "qrData": "https://makerdeck.net/",
+            "qrCorner": "ml",
+            "qrOffsetX": 0.0,
+            "qrOffsetY": 0.0,
+            "qrSize": 28.5,
+            "kerning": 0.0,
+            "lineSpacing": 4,
+            "fontSize": 4.5,
+            "baseThickness": 1.2,
+            "embossHeight": 0.8,
+            "showBorder": true,
+            "showGraphic": true,
+            "customSvg": null,
+            "fontFamily": "helvetiker_bold",
+            "colorBase": "#ffffff",
+            "colorInk": "#000000",
+            "fontWeight": 0.2
+        };
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(32, container.clientWidth / container.clientHeight, 0.1, 2000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        function updateCamera() {
+            const w = container.clientWidth; const h = container.clientHeight;
+            camera.aspect = w / h; camera.updateProjectionMatrix();
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) { camera.clearViewOffset(); camera.position.set(0, 40, 220); } 
+            else { const sidebarWidth = 360; camera.setViewOffset(w, h, -sidebarWidth/2, 0, w, h); camera.position.set(0, 45, 175); }
+            camera.lookAt(0, 0, 0);
+        }
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+        const light = new THREE.DirectionalLight(0xffffff, 0.6);
+        light.position.set(30, 100, 50); scene.add(light);
+
+        const cardGroup = new THREE.Group();
+        scene.add(cardGroup);
+
+        const fontLoader = new THREE.FontLoader();
+        const ttfLoader = new THREE.TTFLoader();
+        const svgLoader = new THREE.SVGLoader();
+
+        // FIXED PATHS: Use specific directories for TTF assets to avoid 403 Forbidden
+        const ghofl    = 'https://cdn.jsdelivr.net/gh/google/fonts@master/ofl/';
+        const ghufl    = 'https://cdn.jsdelivr.net/gh/google/fonts@master/ufl/';
+        const t_ex_json = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/';
+
+        const fontPaths = {
+            helvetiker_bold:    { type: 'json', url: t_ex_json + 'helvetiker_bold.typeface.json' },
+            helvetiker:         { type: 'json', url: t_ex_json + 'helvetiker_regular.typeface.json' },
+            optimer_bold:       { type: 'json', url: t_ex_json + 'optimer_bold.typeface.json' },
+            gentilis_bold:      { type: 'json', url: t_ex_json + 'gentilis_bold.typeface.json' },
+            droid_sans_bold:    { type: 'json', url: t_ex_json + 'droid/droid_sans_bold.typeface.json' },
+            droid_sans_regular: { type: 'json', url: t_ex_json + 'droid/droid_sans_regular.typeface.json' },
+            droid_serif_bold:   { type: 'json', url: t_ex_json + 'droid/droid_serif_bold.typeface.json' },
+            droid_serif_regular:{ type: 'json', url: t_ex_json + 'droid/droid_serif_regular.typeface.json' },
+            alfa_slab_one:      { type: 'ttf', url: ghofl    + 'alfaslabone/AlfaSlabOne-Regular.ttf' },
+            black_ops_one:      { type: 'ttf', url: ghofl    + 'blackopsone/BlackOpsOne-Regular.ttf' },
+            paytone_one:        { type: 'ttf', url: ghofl    + 'paytoneone/PaytoneOne-Regular.ttf' },
+            passion_one:        { type: 'ttf', url: ghofl    + 'passionone/PassionOne-Regular.ttf' },
+            archivo_black:      { type: 'ttf', url: ghofl    + 'archivoblack/ArchivoBlack-Regular.ttf' },
+            anton_regular:      { type: 'ttf', url: ghofl    + 'anton/Anton-Regular.ttf' },
+            ubuntu_bold:        { type: 'ttf', url: ghufl    + 'ubuntu/Ubuntu-Bold.ttf' },
+            bebas_neue_regular: { type: 'ttf', url: ghofl    + 'bebasneue/BebasNeue-Regular.ttf' },
+            lato_black:         { type: 'ttf', url: ghofl    + 'lato/Lato-Black.ttf' },
+            kanit_black:        { type: 'ttf', url: ghofl    + 'kanit/Kanit-Black.ttf' },
+            poppins_black:      { type: 'ttf', url: ghofl    + 'poppins/Poppins-Black.ttf' },
+            titillium_web_bold: { type: 'ttf', url: ghofl    + 'titilliumweb/TitilliumWeb-Bold.ttf' },
+            // Print-Optimized Serifs
+            arvo_bold:          { type: 'ttf', url: ghofl    + 'arvo/Arvo-Bold.ttf' },
+            zilla_slab_bold:    { type: 'ttf', url: ghofl    + 'zillaslab/ZillaSlab-Bold.ttf' },
+            bree_serif:         { type: 'ttf', url: ghofl    + 'breeserif/BreeSerif-Regular.ttf' },
+        };
+
+        let currentFont = null;
+        let updatePending = false;
+
+        async function loadActiveFont() {
+            const entry = fontPaths[config.fontFamily] || fontPaths['helvetiker_bold'];
+            try {
+                if (entry.type === 'json') {
+                    const response = await fetch(entry.url);
+                    if (!response.ok) throw new Error("JSON fail");
+                    const data = await response.json();
+                    currentFont = fontLoader.parse(data);
+                } else {
+                    currentFont = await new Promise((resolve, reject) => {
+                        ttfLoader.load(entry.url, (json) => {
+                            try { resolve(fontLoader.parse(json)); } catch (e) { reject(e); }
+                        }, undefined, (err) => reject(err));
+                    });
+                }
+            } catch (err) {
+                console.warn("Font Load Failed, using fallback", err);
+                const fallbackRes = await fetch(fontPaths.helvetiker_bold.url);
+                currentFont = fontLoader.parse(await fallbackRes.json());
+            }
+            return currentFont;
+        }
+
+        async function createCard() {
+            while (cardGroup.children.length > 0) cardGroup.remove(cardGroup.children[0]);
+            if (!currentFont) await loadActiveFont();
+            if (!currentFont) return;
+
+            const matBase = new THREE.MeshPhongMaterial({ color: config.colorBase });
+            const matInk = new THREE.MeshPhongMaterial({ color: config.colorInk });
+            const isTop = config.qrCorner.includes('t');
+            const isBot = config.qrCorner.includes('b');
+            const isLeft = config.qrCorner.includes('l');
+            const isRight = config.qrCorner.includes('r');
+            const isMid = config.qrCorner.includes('m');
+
+            const base = new THREE.Mesh(new THREE.BoxGeometry(CARD_WIDTH, CARD_HEIGHT, config.baseThickness), matBase);
+            base.position.z = config.baseThickness / 2;
+            cardGroup.add(base);
+
+            const bW = 1.0;
+            if (config.showBorder) {
+                const bar = (w, h, x, y) => {
+                    const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, config.embossHeight), matInk);
+                    b.position.set(x, y, config.baseThickness + config.embossHeight/2);
+                    cardGroup.add(b);
+                };
+                bar(CARD_WIDTH, bW, 0, CARD_HEIGHT/2 - bW/2); bar(CARD_WIDTH, bW, 0, -CARD_HEIGHT/2 + bW/2);
+                bar(bW, CARD_HEIGHT, CARD_WIDTH/2 - bW/2, 0); bar(bW, CARD_HEIGHT, -CARD_WIDTH/2 + bW/2, 0);
+            }
+
+            const currentMargin = config.showBorder ? BASE_MARGIN : BASE_MARGIN - 1.0;
+
+            const sideLines = config.textSide.split('\n');
+            let maxSideLineWidth = 0;
+            const lineSpaceVal = (config.fontSize * config.lineSpacing / 1.5);
+            
+            sideLines.forEach(line => {
+                if (line.trim()) {
+                    const tempGeo = createTextLine(line, matInk, config.fontSize);
+                    if (tempGeo) {
+                        tempGeo.geometry.computeBoundingBox();
+                        const lw = tempGeo.geometry.boundingBox.max.x - tempGeo.geometry.boundingBox.min.x;
+                        maxSideLineWidth = Math.max(maxSideLineWidth, lw);
+                    }
+                }
+            });
+
+            const totalGroupWidth = config.qrSize + currentMargin + maxSideLineWidth;
+            const groupXStart = -totalGroupWidth / 2;
+            const sideBlockHeight = (sideLines.length > 0) ? ((sideLines.length - 1) * lineSpaceVal + config.fontSize) : 0;
+            const totalGroupHeight = Math.max(config.qrSize, sideBlockHeight);
+            
+            const qrXBase = isRight ? groupXStart + maxSideLineWidth + currentMargin : groupXStart;
+            const qrX = qrXBase + config.qrOffsetX;
+            
+            let baseGroupY;
+            if (isTop) baseGroupY = (CARD_HEIGHT/2 - currentMargin) - totalGroupHeight;
+            else if (isBot) baseGroupY = -CARD_HEIGHT/2 + currentMargin;
+            else baseGroupY = -totalGroupHeight / 2;
+
+            const qrY = baseGroupY + config.qrOffsetY;
+            
+            if (config.showGraphic) {
+                if (config.customSvg) {
+                    await drawSVG(qrX, qrY, matInk);
+                } else {
+                    await drawQR(qrX, qrY, matInk);
+                }
+            }
+
+            const areaXStart = isRight ? groupXStart : groupXStart + config.qrSize + currentMargin;
+            const areaWidth = maxSideLineWidth;
+            
+            const sideBlock = new THREE.Group();
+            sideLines.forEach((line, i) => {
+                const lineMesh = createTextLine(line, matInk, config.fontSize);
+                if (lineMesh) {
+                    lineMesh.geometry.computeBoundingBox();
+                    const lw = lineMesh.geometry.boundingBox.max.x - lineMesh.geometry.boundingBox.min.x;
+                    let lx = 0;
+                    if (config.textSideAlignH === 'center') lx = (areaWidth/2) - (lw/2);
+                    else if (config.textSideAlignH === 'right') lx = areaWidth - lw;
+                    lineMesh.position.set(lx, -(i * lineSpaceVal), 0);
+                    sideBlock.add(lineMesh);
+                }
+            });
+
+            const sideBbox = new THREE.Box3().setFromObject(sideBlock);
+            let finalY;
+            if (config.textSideVAlign === 'top') finalY = (qrY + config.qrSize) - (sideBbox.max.y || 0);
+            else if (config.textSideVAlign === 'bottom') finalY = qrY - (sideBbox.min.y || 0);
+            else finalY = (qrY + config.qrSize/2) - ((sideBbox.max.y || 0) + (sideBbox.min.y || 0))/2;
+
+            sideBlock.position.set(areaXStart, finalY, config.baseThickness);
+            cardGroup.add(sideBlock);
+
+            const fs = config.fontSize * 0.9;
+            const fSpace = (fs * config.lineSpacing / 1.5);
+            let zones = [];
+            if (isMid) {
+                let topZoneAlign = config.textFullVAlign;
+                let botZoneAlign = config.textFullVAlign;
+                if (config.textFullVAlign === 'top') { topZoneAlign = 'top'; botZoneAlign = 'bottom'; }
+                else if (config.textFullVAlign === 'bottom') { topZoneAlign = 'bottom'; botZoneAlign = 'top'; }
+                
+                zones.push({ min: qrY + config.qrSize + currentMargin, max: CARD_HEIGHT/2 - currentMargin, text: config.textFull1, vAlign: topZoneAlign });
+                zones.push({ min: -CARD_HEIGHT/2 + currentMargin, max: qrY - currentMargin, text: config.textFull2, vAlign: botZoneAlign });
+            } else {
+                const zMin = isTop ? -CARD_HEIGHT/2 + currentMargin : qrY + config.qrSize + currentMargin;
+                const zMax = isTop ? qrY - currentMargin : CARD_HEIGHT/2 - currentMargin;
+                zones.push({ min: zMin, max: zMax, lines: [config.textFull1, config.textFull2] });
+            }
+
+            zones.forEach(zone => {
+                const block = new THREE.Group();
+                const lines = zone.lines || [zone.text];
+                lines.forEach((txt, i) => {
+                    const mesh = createTextLine(txt, matInk, fs);
+                    if (mesh) {
+                        mesh.geometry.computeBoundingBox();
+                        const bbox = mesh.geometry.boundingBox;
+                        let lx;
+                        if (config.textFullAlign === 'center') lx = -(bbox.max.x + bbox.min.x)/2;
+                        else if (config.textFullAlign === 'right') lx = CARD_WIDTH/2 - currentMargin - bbox.max.x;
+                        else lx = -CARD_WIDTH/2 + currentMargin - bbox.min.x;
+                        mesh.position.set(lx, -(i * fSpace), 0);
+                        block.add(mesh);
+                    }
+                });
+                if (block.children.length > 0) {
+                    const bb = new THREE.Box3().setFromObject(block);
+                    let by;
+                    const activeVAlign = zone.vAlign || config.textFullVAlign;
+                    if (activeVAlign === 'top') by = zone.max - bb.max.y;
+                    else if (activeVAlign === 'bottom') by = zone.min - bb.min.y;
+                    else by = ((zone.min + zone.max)/2) - (bb.max.y + bb.min.y)/2;
+                    block.position.y = by;
+                    block.position.z = config.baseThickness;
+                    cardGroup.add(block);
+                }
+            });
+            updatePending = false;
+        }
+
+        function createTextLine(text, material, size) {
+            if (!text || !text.trim() || !currentFont) return null;
+            const chars = text.toUpperCase().split('');
+            const geometries = [];
+            let xOffset = 0;
+            const fontData = currentFont.data;
+            if (!fontData) return null;
+
+            const scale = size / fontData.resolution;
+            chars.forEach(char => {
+                const glyph = fontData.glyphs[char] || fontData.glyphs['?'];
+                if (char === ' ') {
+                    xOffset += (glyph ? glyph.ha : fontData.resolution * 0.25) * scale + config.kerning;
+                    return;
+                }
+                if (!glyph) return;
+                
+                const geo = new THREE.TextGeometry(char, {
+                    font: currentFont, size: size, height: config.embossHeight,
+                    curveSegments: 3, bevelEnabled: true, bevelThickness: 0, bevelSize: config.fontWeight, bevelOffset: 0, bevelSegments: 1
+                });
+                geo.applyMatrix4(new THREE.Matrix4().makeTranslation(xOffset, 0, 0));
+                geometries.push(geo);
+                xOffset += (glyph.ha * scale) + config.kerning;
+            });
+            if (geometries.length === 0) return null;
+            return new THREE.Mesh(THREE.BufferGeometryUtils.mergeBufferGeometries(geometries), material);
+        }
+
+        async function drawQR(qX, qY, material) {
+            const div = document.getElementById('qr-hidden');
+            div.innerHTML = '';
+            new QRCode(div, { text: config.qrData || " ", width: 64, height: 64, correctLevel: QRCode.CorrectLevel.M });
+            
+            await new Promise(r => {
+                let attempts = 0;
+                let check = setInterval(() => {
+                    const canvas = div.querySelector('canvas');
+                    if (canvas || attempts++ > 25) { clearInterval(check); r(); }
+                }, 50);
+            });
+            
+            const qrCanvas = div.querySelector('canvas');
+            if (!qrCanvas) return;
+            const ctx = qrCanvas.getContext('2d', { willReadFrequently: true });
+            const pix = ctx.getImageData(0, 0, 64, 64).data;
+            
+            const px = config.qrSize / 64;
+            const geos = [];
+            for (let y = 0; y < 64; y++) {
+                for (let x = 0; x < 64; x++) {
+                    if (pix[(y * 64 + x) * 4] < 128) { 
+                        const g = new THREE.BoxGeometry(px * 1.02, px * 1.02, config.embossHeight);
+                        g.translate(x * px, -y * px, config.baseThickness + config.embossHeight / 2);
+                        geos.push(g);
+                    }
+                }
+            }
+            if (geos.length) {
+                const merged = THREE.BufferGeometryUtils.mergeBufferGeometries(geos);
+                const mesh = new THREE.Mesh(merged, material);
+                mesh.position.set(qX, qY + config.qrSize, 0);
+                cardGroup.add(mesh);
+            }
+        }
+
+        async function drawSVG(qX, qY, material) {
+            if (!config.customSvg) return;
+            try {
+                const svgData = svgLoader.parse(config.customSvg);
+                const paths = svgData.paths;
+                const geometries = [];
+
+                // HEURISTIC: Find the total bounding box of all paths to detect background "filler" blocks
+                let totalMinX = Infinity, totalMinY = Infinity, totalMaxX = -Infinity, totalMaxY = -Infinity;
+                const preparedPaths = [];
+
+                paths.forEach(path => {
+                    const shapes = THREE.SVGLoader.createShapes(path);
+                    if (shapes.length === 0) return;
+
+                    let pMinX = Infinity, pMinY = Infinity, pMaxX = -Infinity, pMaxY = -Infinity;
+                    shapes.forEach(shape => {
+                        const pts = shape.getPoints();
+                        pts.forEach(p => {
+                            pMinX = Math.min(pMinX, p.x); pMinY = Math.min(pMinY, p.y);
+                            pMaxX = Math.max(pMaxX, p.x); pMaxY = Math.max(pMaxY, p.y);
+                        });
+                    });
+
+                    totalMinX = Math.min(totalMinX, pMinX); totalMinY = Math.min(totalMinY, pMinY);
+                    totalMaxX = Math.max(totalMaxX, pMaxX); totalMaxY = Math.max(totalMaxY, pMaxY);
+
+                    preparedPaths.push({ path, shapes, bounds: { w: pMaxX - pMinX, h: pMaxY - pMinY } });
+                });
+
+                const totalW = totalMaxX - totalMinX;
+                const totalH = totalMaxY - totalMinY;
+
+                preparedPaths.forEach(data => {
+                    // MITIGATION: Skip paths that cover almost the entire SVG area if they aren't the ONLY path.
+                    // This avoids the "Solid Square Block" issue common in logo exports (background rects).
+                    const coversAll = (data.bounds.w / totalW > 0.98) && (data.bounds.h / totalH > 0.98);
+                    if (coversAll && preparedPaths.length > 1) return;
+                    if (data.path.userData.style.fill === 'none') return;
+
+                    data.shapes.forEach((shape) => {
+                        const geometry = new THREE.ExtrudeGeometry(shape, { depth: config.embossHeight, bevelEnabled: false });
+                        geometries.push(geometry);
+                    });
+                });
+
+                if (geometries.length > 0) {
+                    const merged = THREE.BufferGeometryUtils.mergeBufferGeometries(geometries);
+                    merged.computeBoundingBox();
+                    const size = merged.boundingBox.getSize(new THREE.Vector3());
+                    const scale = config.qrSize / Math.max(size.x, size.y);
+                    const mesh = new THREE.Mesh(merged, material);
+                    mesh.scale.set(scale, -scale, 1);
+                    mesh.position.set(
+                        qX + (config.qrSize - size.x * scale) / 2 - (merged.boundingBox.min.x * scale),
+                        qY + config.qrSize - (config.qrSize - size.y * scale) / 2 + (merged.boundingBox.min.y * scale),
+                        config.baseThickness
+                    );
+                    cardGroup.add(mesh);
+                }
+            } catch (e) { console.warn("SVG Render Error", e); }
+        }
+
+        function syncUIFromConfig() {
+            const map = {
+                'text-side': 'textSide', 'text-full-1': 'textFull1', 'text-full-2': 'textFull2',
+                'qr-data': 'qrData', 'qr-size-slider': 'qrSize', 'qr-offset-x': 'qrOffsetX',
+                'qr-offset-y': 'qrOffsetY', 'kerning': 'kerning', 'line-spacing': 'lineSpacing',
+                'base-thick': 'baseThickness', 'emboss-height': 'embossHeight', 'font-family': 'fontFamily',
+                'color-base': 'colorBase', 'color-ink': 'colorInk', 'show-border': 'showBorder', 'show-graphic': 'showGraphic'
+            };
+            Object.entries(map).forEach(([id, key]) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (el.type === 'checkbox') el.checked = config[key];
+                    else el.value = config[key];
+                    const readout = document.getElementById('readout-' + id.replace('-slider',''));
+                    if (readout) readout.textContent = typeof config[key] === 'number' ? (id.includes('size') ? config[key] + 'mm' : config[key].toFixed(1)) : config[key];
+                }
+            });
+            document.querySelectorAll('.align-item').forEach(btn => {
+                const val = btn.dataset.val || btn.dataset.corner;
+                const active = (btn.classList.contains('corner-btn') && val === config.qrCorner) || (btn.dataset.key === 'textSideAlignH' && val === config.textSideAlignH) || (btn.dataset.key === 'textSideVAlign' && val === config.textSideVAlign) || (btn.classList.contains('align-btn') && val === config.textFullAlign) || (btn.classList.contains('v-align-btn') && val === config.textFullVAlign);
+                btn.classList.toggle('active', active);
+            });
+            document.getElementById('svg-status').textContent = config.customSvg ? "Custom SVG Active" : "Using QR Generation";
+            document.getElementById('clear-svg-btn').classList.toggle('hidden', !config.customSvg);
+        }
+
+        let debounceTimer;
+        const bind = (id, key, type) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('input', () => {
+                config[key] = type === 'f' ? parseFloat(el.value) : type === 'b' ? el.checked : el.value;
+                const readout = document.getElementById('readout-' + id.replace('-slider',''));
+                if (readout) readout.textContent = type === 'f' ? (id.includes('size') ? config[key] + 'mm' : config[key].toFixed(1)) : config[key];
+                
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(async () => {
+                    if (id === 'font-family') await loadActiveFont();
+                    updatePending = true;
+                }, 200);
+            });
+        };
+        bind('text-side','textSide','s'); bind('text-full-1','textFull1','s'); bind('text-full-2','textFull2','s');
+        bind('qr-data','qrData','s'); bind('qr-size-slider','qrSize','f'); bind('qr-offset-x','qrOffsetX','f');
+        bind('qr-offset-y','qrOffsetY','f'); bind('kerning','kerning','f'); bind('line-spacing','lineSpacing','f');
+        bind('base-thick','baseThickness','f'); bind('emboss-height','embossHeight','f'); bind('font-family','fontFamily','s');
+        bind('color-base','colorBase','s'); bind('color-ink','colorInk','s'); bind('show-border','showBorder','b'); bind('show-graphic','showGraphic','b');
+
+        document.querySelectorAll('.align-item').forEach(btn => {
+            btn.onclick = () => {
+                const key = btn.dataset.key || (btn.classList.contains('corner-btn') ? 'qrCorner' : btn.classList.contains('align-btn') ? 'textFullAlign' : 'textFullVAlign');
+                config[key] = btn.dataset.val || btn.dataset.corner;
+                syncUIFromConfig(); updatePending = true;
+            };
+        });
+
+        document.getElementById('upload-svg-btn').onclick = () => document.getElementById('svg-file-input').click();
+        document.getElementById('svg-file-input').onchange = (e) => {
+            const reader = new FileReader(); reader.onload = (ev) => { config.customSvg = ev.target.result; syncUIFromConfig(); updatePending = true; };
+            reader.readAsText(e.target.files[0]);
+        };
+        document.getElementById('clear-svg-btn').onclick = () => { config.customSvg = null; syncUIFromConfig(); updatePending = true; };
+        document.getElementById('export-json-btn').onclick = () => {
+            const a = document.createElement('a'); a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config)); a.download = "config.json"; a.click();
+        };
+        document.getElementById('import-btn-workspace').onclick = () => document.getElementById('config-file-input').click();
+        document.getElementById('config-file-input').onchange = (e) => {
+            const reader = new FileReader(); reader.onload = async (ev) => { try { config = {...config, ...JSON.parse(ev.target.result)}; syncUIFromConfig(); await loadActiveFont(); updatePending = true; } catch(e){} };
+            reader.readAsText(e.target.files[0]);
+        };
+
+        // Drag and Drop support for SVG
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            window.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        window.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files && files[0] && files[0].name.toLowerCase().endsWith('.svg')) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    config.customSvg = ev.target.result;
+                    syncUIFromConfig();
+                    updatePending = true;
+                };
+                reader.readAsText(files[0]);
+            }
+        }, false);
+
+        document.getElementById('export-btn').onclick = () => {
+            const oldRot = cardGroup.rotation.clone(); const oldPos = cardGroup.position.clone();
+            cardGroup.rotation.set(0,0,0); cardGroup.position.set(0,0,0); cardGroup.updateMatrixWorld(true);
+            const exporter = new THREE.STLExporter(); const res = exporter.parse(cardGroup, { binary: true });
+            const n = config.textSide.split('\n')[0].replace(/\W/g, '_').substring(0, 15) || "Card";
+            const blob = new Blob([res], { type: 'application/octet-stream' });
+            const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `BusinessCard_${n}.stl`; link.click();
+            cardGroup.rotation.copy(oldRot); cardGroup.position.copy(oldPos);
+        };
+
+        document.getElementById('export-3mf-btn').onclick = async () => {
+            if (typeof JSZip === 'undefined') return;
+            const zip = new JSZip();
+            const oldRot = cardGroup.rotation.clone(); const oldPos = cardGroup.position.clone();
+            cardGroup.rotation.set(0,0,0); cardGroup.position.set(0,0,0); cardGroup.updateMatrixWorld(true);
+
+            const extractGeo = (mesh) => {
+                let geo = mesh.geometry.clone();
+                if (geo.index) geo = geo.toNonIndexed();
+                mesh.updateMatrixWorld(true);
+                geo.applyMatrix4(mesh.matrixWorld);
+                const pos = geo.attributes.position;
+                const vMap = new Map();
+                const verts = [];
+                const tris = [];
+                for (let i = 0; i < pos.count; i += 3) {
+                    const idx = [];
+                    for (let j = 0; j < 3; j++) {
+                        const vx = pos.getX(i+j), vy = pos.getY(i+j), vz = pos.getZ(i+j);
+                        const key = vx.toFixed(4) + ',' + vy.toFixed(4) + ',' + vz.toFixed(4);
+                        if (!vMap.has(key)) {
+                            vMap.set(key, verts.length);
+                            verts.push({x: vx, y: vy, z: vz});
+                        }
+                        idx.push(vMap.get(key));
+                    }
+                    tris.push(idx);
+                }
+                return {verts, tris};
+            };
+            const buildMeshXml = (verts, tris) => {
+                let v = '';
+                for (let i = 0; i < verts.length; i++)
+                    v += '<vertex x="' + verts[i].x.toFixed(4) + '" y="' + verts[i].y.toFixed(4) + '" z="' + verts[i].z.toFixed(4) + '" />\n';
+                let t = '';
+                for (let i = 0; i < tris.length; i++)
+                    t += '<triangle v1="' + tris[i][0] + '" v2="' + tris[i][1] + '" v3="' + tris[i][2] + '" />\n';
+                return '<mesh>\n<vertices>\n' + v + '</vertices>\n<triangles>\n' + t + '</triangles>\n</mesh>\n';
+            };
+            const mergeGeos = (meshes) => {
+                const allV = [], allT = [];
+                meshes.forEach(m => {
+                    const g = extractGeo(m);
+                    const offset = allV.length;
+                    g.verts.forEach(v => allV.push(v));
+                    g.tris.forEach(tri => allT.push([tri[0]+offset, tri[1]+offset, tri[2]+offset]));
+                });
+                return {verts: allV, tris: allT};
+            };
+
+            const baseMeshes = [], inkMeshes = [];
+            cardGroup.traverse(c => {
+                if (!c.isMesh) return;
+                if (c.material && c.material.color && c.material.color.getHexString() === new THREE.Color(config.colorBase).getHexString()) baseMeshes.push(c);
+                else inkMeshes.push(c);
+            });
+
+            const baseGeo = baseMeshes.length ? mergeGeos(baseMeshes) : null;
+            const inkGeo = inkMeshes.length ? mergeGeos(inkMeshes) : null;
+            cardGroup.rotation.copy(oldRot); cardGroup.position.copy(oldPos);
+            if (!baseGeo && !inkGeo) return;
+
+            const safeName = 'BusinessCard_' + (config.textSide.split('\n')[0].replace(/\W/g, '_').substring(0, 15) || 'Card');
+            let objectsXml = '', buildXml = '', nextId = 1;
+            if (baseGeo) {
+                const id = nextId++;
+                objectsXml += '<object id="' + id + '" type="model" name="Card_Base">\n' + buildMeshXml(baseGeo.verts, baseGeo.tris) + '</object>\n';
+                buildXml += '<item objectid="' + id + '" />\n';
+            }
+            if (inkGeo) {
+                const id = nextId++;
+                objectsXml += '<object id="' + id + '" type="model" name="Card_Text">\n' + buildMeshXml(inkGeo.verts, inkGeo.tris) + '</object>\n';
+                buildXml += '<item objectid="' + id + '" />\n';
+            }
+            const modelXml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+                '<model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">\n' +
+                '<resources>\n' + objectsXml + '</resources>\n' +
+                '<build>\n' + buildXml + '</build>\n</model>';
+            zip.file('3D/3dmodel.model', modelXml);
+            zip.file('_rels/.rels', '<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Target="/3D/3dmodel.model" Id="rel0" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel" /></Relationships>');
+            zip.file('[Content_Types].xml', '<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml" /><Default Extension="model" ContentType="application/vnd.ms-package.3dmanufacturing-3dmodel+xml" /></Types>');
+            const blob = await zip.generateAsync({type: 'blob'});
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = safeName + '.3mf'; a.click();
+        };
+
+        const modal = document.getElementById('help-modal');
+        document.getElementById('help-trigger').onclick = () => modal.style.display = 'block';
+        document.getElementById('modal-close').onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
+
+        let drag = false, pan = false, prev = {x:0, y:0};
+        window.onmousedown = (e) => { if(!e.target.closest('.sidebar')) { if (e.button === 0) drag = true; if (e.button === 2) pan = true; prev = {x: e.offsetX, y: e.offsetY}; } };
+        window.onmouseup = () => { drag = false; pan = false; };
+        window.onmousemove = (e) => {
+            if (drag) { cardGroup.rotation.y += (e.offsetX - prev.x) * 0.01; cardGroup.rotation.x += (e.offsetY - prev.y) * 0.01; }
+            if (pan) { cardGroup.position.x += (e.offsetX - prev.x) * 0.2; cardGroup.position.y -= (e.offsetY - prev.y) * 0.2; }
+            prev = {x: e.offsetX, y: e.offsetY};
+        };
+        window.onwheel = (e) => { if(!e.target.closest('.sidebar')) camera.position.z = Math.max(40, Math.min(camera.position.z + e.deltaY*0.1, 400)); };
+
+        async function init() {
+            syncUIFromConfig(); 
+            await loadActiveFont(); 
+            await createCard(); 
+            updateCamera();
+            
+            let lastUpdate = 0;
+            function run(time) {
+                if (updatePending && time - lastUpdate > 100) {
+                    lastUpdate = time;
+                    createCard();
+                }
+                requestAnimationFrame(run);
+                renderer.render(scene, camera);
+            }
+            requestAnimationFrame(run);
+        }
+        init();
+
+        window.onresize = () => {
+            const w = container.clientWidth; const h = container.clientHeight;
+            camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h); updateCamera();
+        };
+    </script>
+</body>
+</html>
